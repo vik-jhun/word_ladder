@@ -34,7 +34,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     # with open filename as wordList:
     #     xs = wordList.readlines()
     # print ('xs=', xs)
-    
+
     f = open(dictionary_file)
     word = f.readline()
     while word:
@@ -57,9 +57,14 @@ def verify_word_ladder(ladder):
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
     '''
-    for word in ladder:
-        if _adjacent(ladder(0),ladder(1)) == True:
-            return True
+    i = 0
+    if i == len(ladder):
+        return True
+    if i != len(ladder):
+        return False
+    if _adjacent(ladder[0], ladder[1]) == True:
+        i += 1
+        return verify_word_ladder(ladder[1:])
 
 
 
