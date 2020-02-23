@@ -58,13 +58,13 @@ def verify_word_ladder(ladder):
     otherwise returns False.
     '''
     i = 0
+    if _adjacent(ladder[0], ladder[1]) == True:
+        i += 1
+        return verify_word_ladder(ladder[1:])
     if i == len(ladder):
         return True
     if i != len(ladder):
         return False
-    if _adjacent(ladder[0], ladder[1]) == True:
-        i += 1
-        return verify_word_ladder(ladder[1:])
 
 
 
