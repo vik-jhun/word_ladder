@@ -1,8 +1,13 @@
 #!/bin/python3
-
-
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
-        '''
+    f = open(dictionary_file)
+    word = f.readline()
+    while word:
+        print(word)
+        word = f.readline()
+    f.close()
+
+    '''
     Returns a list satisfying the following properties:
     1. the first element is `start_word`
     2. the last element is `end_word`
@@ -25,14 +30,18 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
-    with open (words5.dict) as wordList:
-        xs = wordList.readlines()
-    print ('xs=', xs)
-
-    wordList.append(endWord)
-    queue = collections.deque([[beginWord, 1]])
-    leng = len(beginWord)
+    # filename = "words5.dict"
+    # with open filename as wordList:
+    #     xs = wordList.readlines()
+    # print ('xs=', xs)
     
+    f = open(dictionary_file)
+    word = f.readline()
+    while word:
+        print(word)
+        word = f.readline()
+    f.close()
+
     while queue:
         word, length = queue.popleft()
         if word == endWord:
