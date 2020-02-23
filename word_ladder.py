@@ -2,26 +2,7 @@
 
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
-    with open (words5.dict) as wordList:
-        xs = wordList.readlines()
-    print ('xs=', xs)
-
-    wordList.append(endWord)
-    queue = collections.deque([[beginWord, 1]])
-    leng = len(beginWord)
-    
-    while queue:
-        word, length = queue.popleft()
-        if word == endWord:
-            return length
-        for n in wordList:
-            if sum(n[i]!=word[i] for i in xrange(leng))==1:
-                wordList.remove(n)
-                queue.append([n,length+1])
-    return 0
-
-
-    '''
+        '''
     Returns a list satisfying the following properties:
     1. the first element is `start_word`
     2. the last element is `end_word`
@@ -44,13 +25,34 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
+    with open (words5.dict) as wordList:
+        xs = wordList.readlines()
+    print ('xs=', xs)
 
+    wordList.append(endWord)
+    queue = collections.deque([[beginWord, 1]])
+    leng = len(beginWord)
+    
+    while queue:
+        word, length = queue.popleft()
+        if word == endWord:
+            return length
+        for n in wordList:
+            if sum(n[i]!=word[i] for i in xrange(leng))==1:
+                wordList.remove(n)
+                queue.append([n,length+1])
+    return 0
 
 def verify_word_ladder(ladder):
     '''
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
     '''
+    for word in ladder:
+        if _adjacent(ladder(0),ladder(1)) == True:
+            return True
+
+
 
 
 def _adjacent(word1, word2):
@@ -62,3 +64,14 @@ def _adjacent(word1, word2):
     >>> _adjacent('stone','money')
     False
     '''
+    if len(word1) == len(word2):
+        count_diffs = 0
+        for a, b in zip(word1, word2):
+            if a!=b:
+                count_diffs += 1
+        if count_diffs == 1:
+            return True
+        else:
+            return False
+
+
