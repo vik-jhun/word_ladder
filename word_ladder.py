@@ -113,7 +113,7 @@ def _adjacent(word1, word2):
     False
     '''
 
-    if word1 == word2
+    if word1 == word2:
         return False 
         
     count_diffs = 0
