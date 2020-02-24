@@ -1,13 +1,6 @@
 #!/bin/python3
-'''
-d = {}
-with open("words5.dict") as f:
-    for line in f:
-        (key, val) = line.split()
-        d[int(key)] = val
 
-print (d)
-'''
+from collections import deque
 
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
@@ -34,22 +27,45 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     Whenever it is impossible to generate a word ladder between the two words,
     the function returns `None`.
     '''
-    # filename = "words5.dict"
-    # with open filename as wordList:
-    #     xs = wordList.readlines()
-    # print ('xs=', xs)
 
-    data_1 = open(dictionary_file)
-    data = data_1.read()
+word_1 = open(dictionary_file)
+word = word_1.read()
 
-    #print(data)
-
-    wordList = []
-    wordList.append(data)
+wordList = []
+wordList.append(word)
 
 
-    if start_word in wordList:
-        wordList.remove(start_word)
+#     Create a stack
+word_stack = [] 
+# Push the start word onto the stack
+word_stack.append(start_word)
+# Create a queue
+word_queue = deque()
+# Enqueue the stack onto the queue
+word_queue.appendleft(word_stack)
+
+# While the queue is not empty
+while len(word_queue) != 0:
+#     Dequeue a stack from the queue
+#WILL NEED TO SAVE THIS VARIABLE
+	dequeued = word_queue.pop()
+#     For each word in the dictionary
+	for word in wordList:
+#         If the word is adjacent to the top of the stack
+		if _adjacent(word, dequeued):
+#             If this word is the end word
+		  if word == end_word:
+#                 You are done!
+			return True
+#                 The front stack plus this word is your word ladder.
+#             Make a copy of the stack
+#             Push the found word onto the copy
+#             Enqueue the copy
+#             Delete word from the dictionary
+
+
+        if start_word in wordList:
+            wordList.remove(start_word)
         
     if end_word not in wordList:
         return 0
@@ -71,17 +87,18 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 word_ladder("abler", "ables")
 
 
+def verify_word_ladder(ladder):
+    '''
+    Returns True if each entry of the input list is adjacent to its neighbors;
+    otherwise returns False.
+    '''   
+if ladder == []:
+	return False
 
-
-
-# def verify_word_ladder(ladder):
-#     '''
-#     Returns True if each entry of the input list is adjacent to its neighbors;
-#     otherwise returns False.
-#     '''
-#     if _adjacent(ladder[0], ladder[1]) == True:
-#         return verify_word_ladder(ladder[1:])
-#     return False
+for word1,word2 in zip(ladder,ladder[1:]):
+	if not _adjacent(word1, word2):
+		return False
+return True
 
 
 
