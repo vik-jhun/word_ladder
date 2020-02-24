@@ -74,16 +74,14 @@ word_ladder("abler", "ables")
 
 
 
-def verify_word_ladder(ladder):
-    '''
-    Returns True if each entry of the input list is adjacent to its neighbors;
-    otherwise returns False.
-    '''
-    if len(ladder) < 1:
-        return True
-    if _adjacent(ladder[0], ladder[1]) == True:
-        return verify_word_ladder(ladder[1:])
-    return False
+# def verify_word_ladder(ladder):
+#     '''
+#     Returns True if each entry of the input list is adjacent to its neighbors;
+#     otherwise returns False.
+#     '''
+#     if _adjacent(ladder[0], ladder[1]) == True:
+#         return verify_word_ladder(ladder[1:])
+#     return False
 
 
 
