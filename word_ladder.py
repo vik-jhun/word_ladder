@@ -113,9 +113,6 @@ def _adjacent(word1, word2):
     >>> _adjacent('stone','money')
     False
     '''
-
-    if word1 == word2
-        return False 
         
     count_diffs = 0
     if len(word1) == len(word2):
