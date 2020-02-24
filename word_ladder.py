@@ -1,7 +1,7 @@
 #!/bin/python3
 
 from collections import deque
-
+import copy
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
@@ -43,8 +43,14 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
         dequeued = word_queue.pop() #     Dequeue a stack from the queue AND save
         for word in wordList: #     For each word in the dictionary
             if _adjacent(word, dequeued): #         If the word is adjacent to the top of the stack
+                dequeued_copy = copy.deepcopy(dequeued)
                 if word == end_word: # If this word is the end word
-                    return True #                 You are done!
+                    for word2 in range(len(dequeued_copy)):
+                        if _adjacent(dequeued[i],dequeued[i+1]):
+                            dequeued_copy.pop[i]
+                    return (dequeued_copy)
+                word_queue.appendleft(dequeued_copy)
+                wordList.remove(word)
 
 
 
@@ -87,7 +93,7 @@ def verify_word_ladder(ladder):
     '''
 
     if ladder == []:
-	   return False
+        return False
     for word1,word2 in zip(ladder,ladder[1:]):
         if not _adjacent(word1, word2):
             return False
