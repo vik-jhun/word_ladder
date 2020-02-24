@@ -1,6 +1,16 @@
 #!/bin/python3
-def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
+'''
+d = {}
+with open("words5.dict") as f:
+    for line in f:
+        (key, val) = line.split()
+        d[int(key)] = val
 
+print (d)
+'''
+
+
+def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
     Returns a list satisfying the following properties:
     1. the first element is `start_word`
@@ -29,9 +39,14 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     #     xs = wordList.readlines()
     # print ('xs=', xs)
 
-    f = open(dictionary_file)
-    word = f.readline()
-    f.close()
+    data_1 = open(dictionary_file)
+    data = data_1.read()
+
+    #print(data)
+
+    wordList = []
+    wordList.append(data)
+
 
     if start_word in wordList:
         wordList.remove(start_word)
@@ -51,7 +66,13 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
             if sum(n[i] != word[i] for i in xrange(leng)) == 1:
                 wordList.remove(n)
                 queue.append([n,length+1])
-    return 0     
+    return 0   
+
+word_ladder("abler", "ables")
+
+
+
+
 
 def verify_word_ladder(ladder):
     '''
