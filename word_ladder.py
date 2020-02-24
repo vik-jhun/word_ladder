@@ -78,22 +78,20 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 queue.append([n,length+1])
     return 0   
 
-word_ladder("abler", "ables")
 
 
 def verify_word_ladder(ladder):
     '''
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
-    '''   
-    
-if ladder == []:
-	return False
+    '''
 
-for word1,word2 in zip(ladder,ladder[1:]):
-	if not _adjacent(word1, word2):
-		return False
-return True
+    if ladder == []:
+	   return False
+    for word1,word2 in zip(ladder,ladder[1:]):
+        if not _adjacent(word1, word2):
+            return False
+    return True
 
 
 
