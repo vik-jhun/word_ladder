@@ -94,6 +94,7 @@ def verify_word_ladder(ladder):
 
     if ladder == []:
         return False
+
     for word1,word2 in zip(ladder,ladder[1:]):
         if not _adjacent(word1, word2):
             return False
@@ -111,10 +112,14 @@ def _adjacent(word1, word2):
     >>> _adjacent('stone','money')
     False
     '''
+
+    if word1 == word2
+        return False 
+        
     count_diffs = 0
     if len(word1) == len(word2):
         for a, b in zip(word1, word2):
-            if a!=b:
+            if a!= b:
                 count_diffs += 1
     if count_diffs == 1:
         return True
