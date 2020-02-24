@@ -1,11 +1,5 @@
 #!/bin/python3
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
-    f = open(dictionary_file)
-    word = f.readline()
-    while word:
-        print(word)
-        word = f.readline()
-    f.close()
 
     '''
     Returns a list satisfying the following properties:
@@ -37,34 +31,38 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     f = open(dictionary_file)
     word = f.readline()
-    while word:
-        print(word)
-        word = f.readline()
     f.close()
 
+    if start_word in wordList:
+        wordList.remove(start_word)
+        
+    if end_word not in wordList:
+        return 0
+        
+    wordList.append(end_word)
+    queue = collections.deque([[start_word, 1]])
+    leng = len(start_word)
+    
     while queue:
         word, length = queue.popleft()
-        if word == endWord:
+        if word == end_word:
             return length
         for n in wordList:
-            if sum(n[i]!=word[i] for i in xrange(leng))==1:
+            if sum(n[i] != word[i] for i in xrange(leng)) == 1:
                 wordList.remove(n)
                 queue.append([n,length+1])
-    return 0
+    return 0     
 
 def verify_word_ladder(ladder):
     '''
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
     '''
-    i = 0
-    if _adjacent(ladder[0], ladder[1]) == True:
-        i += 1
-        return verify_word_ladder(ladder[1:])
-    if i == len(ladder):
+    if len(ladder) < 1:
         return True
-    if i != len(ladder):
-        return False
+    if _adjacent(ladder[0], ladder[1]) == True:
+        return verify_word_ladder(ladder[1:])
+    return False
 
 
 
@@ -85,7 +83,6 @@ def _adjacent(word1, word2):
                 count_diffs += 1
         if count_diffs == 1:
             return True
-        else:
-            return False
+    return False
 
 
