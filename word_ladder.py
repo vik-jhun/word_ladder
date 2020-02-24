@@ -45,7 +45,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
             if _adjacent(word, dequeued): #         If the word is adjacent to the top of the stack
                 dequeued_copy = copy.deepcopy(dequeued)
                 if word == end_word: # If this word is the end word
-                    for word2 in range(len(dequeued_copy)):
+                    for word_2 in range(len(dequeued_copy)):
                         if _adjacent(dequeued[i],dequeued[i+1]):
                             dequeued_copy.pop[i]
                     return (dequeued_copy)
@@ -64,25 +64,25 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 #             Delete word from the dictionary
 
 
-        if start_word in wordList:
-            wordList.remove(start_word)
+    #     if start_word in wordList:
+    #         wordList.remove(start_word)
         
-    if end_word not in wordList:
-        return 0
+    # if end_word not in wordList:
+    #     return 0
         
-    wordList.append(end_word)
-    queue = collections.deque([[start_word, 1]])
-    leng = len(start_word)
+    # wordList.append(end_word)
+    # queue = collections.deque([[start_word, 1]])
+    # leng = len(start_word)
     
-    while queue:
-        word, length = queue.popleft()
-        if word == end_word:
-            return length
-        for n in wordList:
-            if sum(n[i] != word[i] for i in xrange(leng)) == 1:
-                wordList.remove(n)
-                queue.append([n,length+1])
-    return 0   
+    # while queue:
+    #     word, length = queue.popleft()
+    #     if word == end_word:
+    #         return length
+    #     for n in wordList:
+    #         if sum(n[i] != word[i] for i in xrange(leng)) == 1:
+    #             wordList.remove(n)
+    #             queue.append([n,length+1])
+    # return 0   
 
 
 
@@ -116,8 +116,9 @@ def _adjacent(word1, word2):
         for a, b in zip(word1, word2):
             if a!=b:
                 count_diffs += 1
-        if count_diffs == 1:
-            return True
-    return False
+    if count_diffs == 1:
+        return True
+    else:
+        return False
 
 
