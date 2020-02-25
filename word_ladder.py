@@ -34,7 +34,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     wordList.append(word)
 
     if start_word == end_word:
-        return start_word
+        return [start_word]
 
     word_stack = [] #     Create a stack
     word_stack.append(start_word) # Push the start word onto the stack
