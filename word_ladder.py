@@ -28,16 +28,18 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     the function returns `None`.
     '''
 
-
-    words = open(dictionary_file).readlines()
-    wordList = []
-    for i in words:
-        wordList.append(i.strip("\n"))
+    if start_word == end_word:
+        return [start_word]
 
     word_stack = [] #     Create a stack
     word_stack.append(start_word) # Push the start word onto the stack
     word_queue = deque()  # Create a queue
     word_queue.appendleft(word_stack)  # Enqueue the stack onto the queue
+
+    words = open(dictionary_file).readlines()
+    wordList = []
+    for i in words:
+        wordList.append(i.strip("\n"))
 
     while len(word_queue) != 0: # While the queue is not empty
         temp = word_queue.pop() #     Dequeue a stack from the queue AND save
