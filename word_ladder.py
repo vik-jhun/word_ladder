@@ -28,10 +28,12 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     the function returns `None`.
     '''
 
-    word_1 = open(dictionary_file)
-    word = word_1.read()
+    words = open(dictionary_file).readlines()
     wordList = []
-    wordList.append(word)
+    for i in words:
+        wordList.append(i.strip("\n"))
+
+    print(wordList)
 
     if start_word == end_word:
         return [start_word]
@@ -126,5 +128,7 @@ def _adjacent(word1, word2):
         return True
     else:
         return False
+
+word_ladder("hello","hells")
 
 
