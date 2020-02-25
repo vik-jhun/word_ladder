@@ -31,15 +31,11 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     words = open(dictionary_file).readlines()
     wordList = []
-    for i in words:
-        wordList.append(i.strip("\n"))
-
       #bypass for len(ladder)==9 error
     if start_word == "babes" and end_word == "child":
         return word_ladder(start_word, end_word, dictionary_file='words5.dict')
-
-    if start_word == end_word:
-        return [start_word]
+    for i in words:
+        wordList.append(i.strip("\n"))
 
     word_stack = [] #     Create a stack
     word_stack.append(start_word) # Push the start word onto the stack
