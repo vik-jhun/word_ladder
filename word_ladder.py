@@ -43,7 +43,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     while len(word_queue) != 0: # While the queue is not empty
         temp = word_queue.pop() #     Dequeue a stack from the queue AND save
-        for word in wordList: #     For each word in the dictionary
+        for word in set(wordList): #     For each word in the dictionary
             if _adjacent(word, temp[-1]): #         If the word is adjacent to the top of the stack
                 temp_copy = copy.deepcopy(temp)
                 temp_copy.append(word)
@@ -54,40 +54,6 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                     return (temp_copy)
                 word_queue.appendleft(temp_copy)
                 wordList.remove(word)
-
-
-
-
-
-
-#                 The front stack plus this word is your word ladder.
-#             Make a copy of the stack
-#             Push the found word onto the copy
-#             Enqueue the copy
-#             Delete word from the dictionary
-
-
-    #     if start_word in wordList:
-    #         wordList.remove(start_word)
-        
-    # if end_word not in wordList:
-    #     return 0
-        
-    # wordList.append(end_word)
-    # queue = collections.deque([[start_word, 1]])
-    # leng = len(start_word)
-    
-    # while queue:
-    #     word, length = queue.popleft()
-    #     if word == end_word:
-    #         return length
-    #     for n in wordList:
-    #         if sum(n[i] != word[i] for i in xrange(leng)) == 1:
-    #             wordList.remove(n)
-    #             queue.append([n,length+1])
-    # return 0   
-
-
 
 def verify_word_ladder(ladder):
     '''
@@ -126,5 +92,4 @@ def _adjacent(word1, word2):
         return True
     else:
         return False
-
 
