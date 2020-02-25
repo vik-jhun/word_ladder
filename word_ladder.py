@@ -52,7 +52,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 if word == end_word: # If this word is the end word
                     for j in range(1, len(temp_copy)-2):
                         if _adjacent(temp[j-1],temp[j+1]):
-                            temp_copy.pop[j]
+                            temp_copy.pop(j)
                     return (temp_copy)
                 word_queue.appendleft(temp_copy)
                 wordList.remove(word)
