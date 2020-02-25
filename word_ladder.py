@@ -50,8 +50,8 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 temp_copy = copy.deepcopy(temp)
                 temp_copy.append(word)
                 if word == end_word: # If this word is the end word
-                    for word_2 in range(1, len(temp_copy)-2):
-                        if _adjacent(temp[word2-1],temp[word2+1]):
+                    for j in range(1, len(temp_copy)-2):
+                        if _adjacent(temp[j-1],temp[j+1]):
                             temp_copy.pop[i]
                     return (temp_copy)
                 word_queue.appendleft(temp_copy)
@@ -128,7 +128,5 @@ def _adjacent(word1, word2):
         return True
     else:
         return False
-
-word_ladder("hello","hells")
 
 
