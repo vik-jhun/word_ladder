@@ -30,14 +30,16 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     word_1 = open(dictionary_file)
     word = word_1.read()
-
     wordList = []
     wordList.append(word)
+
+    if start_word == end_word
+        return start_word
 
     word_stack = [] #     Create a stack
     word_stack.append(start_word) # Push the start word onto the stack
     word_queue = deque()  # Create a queue
-    word_queue.appendleft(word_stack) # Enqueue the stack onto the queue
+    word_queue.appendleft(word_stack)  # Enqueue the stack onto the queue
 
     while len(word_queue) != 0: # While the queue is not empty
         temp = word_queue.pop() #     Dequeue a stack from the queue AND save
