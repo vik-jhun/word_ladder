@@ -92,7 +92,7 @@ def verify_word_ladder(ladder):
     Returns True if each entry of the input list is adjacent to its neighbors;
     otherwise returns False.
     '''
-    for word1,word2 in zip(ladder[i], ladder[i+1]):
+    for word1,word2 in zip(ladder[0], ladder[1:]):
         if not _adjacent(word1, word2):
             return False
         return True
